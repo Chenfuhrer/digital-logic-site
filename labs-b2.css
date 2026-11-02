@@ -1,0 +1,101 @@
+/* 实验 B 组（序列检测器 / 555 / AD·DA）专用样式。类名统一 lb2- 前缀，颜色只用 CSS 变量。 */
+
+.lb2-sec[hidden], .lb2-box[hidden], .lb2-field[hidden], .lb2-grp[hidden], .lb2-grp [hidden] { display: none !important; }
+
+/* 左侧分节 */
+.lb2-sec { min-width: 0; display: grid; gap: 8px; }
+.lb2-h {
+  margin: 4px 0 0;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 5px;
+}
+.lb2-p { margin: 0; font-size: 13px; line-height: 1.75; color: var(--ink-2); }
+.lb2-dim { color: var(--ink-3); }
+.lb2-legend { margin: 0; font-size: 12.5px; line-height: 1.7; color: var(--ink-2); }
+.lb2-k-hi { color: var(--hi); font-weight: 700; }
+.lb2-k-ok { color: var(--ok); font-weight: 700; }
+.lb2-k-data { color: var(--data); font-weight: 700; }
+.lb2-k-clk { color: var(--clk); font-weight: 700; }
+.lb2-k-warn { color: var(--warn); font-weight: 700; }
+.lb2-scroll { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; }
+.lb2-scroll table { margin: 0; }
+
+/* 右侧控件 */
+.lb2-ctl-h {
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--rule-2);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  line-height: 1.5;
+}
+.lb2-grp { display: grid; gap: 12px; }
+.lb2-input { width: 100%; box-sizing: border-box; font-family: var(--mono); }
+.lb2-queue { font-family: var(--mono); font-size: 12px; overflow-wrap: anywhere; line-height: 1.6; color: var(--ink); }
+.lb2-next b { color: var(--paper); background: var(--hi); padding: 0 3px; border-radius: 2px; }
+
+/* 提示条 */
+.lb2-alert {
+  padding: 8px 12px;
+  border: 1px solid var(--rule-2);
+  border-left: 4px solid var(--ink-3);
+  border-radius: 4px;
+  background: var(--card);
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.lb2-alert.ok { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 9%, var(--card)); }
+.lb2-alert.warn { border-color: var(--warn); background: color-mix(in srgb, var(--warn) 8%, var(--card)); }
+.lb2-alert.hi { border-color: var(--hi); background: color-mix(in srgb, var(--hi) 8%, var(--card)); }
+
+/* 表格 */
+.lb2-tt td.lb2-l { text-align: left; font-family: var(--sans); font-size: 12.5px; white-space: nowrap; }
+.lb2-tt td.lb2-last { box-shadow: inset 0 0 0 2px var(--hi); }
+.lb2-tt td.lb2-ok { color: var(--ok); font-weight: 700; }
+.lb2-tt td.lb2-bad { color: var(--hi); font-weight: 700; }
+
+/* 方程 */
+.lb2-eq { display: grid; gap: 6px; font-size: 14px; overflow-x: auto; }
+.lb2-eq .katex { font-size: 1.05em; }
+.lb2-code { display: inline-block; font-family: var(--mono); font-size: 12px; padding: 1px 6px; margin: 1px 2px; border: 1px solid var(--rule-2); border-radius: 3px; background: var(--card); }
+
+/* 公式小卡（555 / ADC 读数旁的推导） */
+.lb2-formula { display: grid; gap: 4px; font-size: 13.5px; line-height: 1.8; overflow-x: auto; }
+.lb2-formula .katex { font-size: 1.04em; }
+
+/* SAR 寄存器 */
+.lb2-reg { display: flex; flex-wrap: wrap; gap: 4px; align-items: flex-end; }
+.lb2-regbit {
+  display: grid;
+  justify-items: center;
+  min-width: 30px;
+  padding: 3px 4px;
+  border: 1px solid var(--ink);
+  border-radius: 4px;
+  background: var(--card);
+  font-family: var(--mono);
+}
+.lb2-regbit b { font-size: 16px; line-height: 1.2; }
+.lb2-regbit small { font-size: 9px; color: var(--ink-3); }
+.lb2-regbit.on { background: var(--hi); border-color: var(--hi); color: var(--paper); }
+.lb2-regbit.on small { color: var(--paper); }
+.lb2-regbit.try { box-shadow: 0 0 0 3px color-mix(in srgb, var(--clk) 55%, transparent); border-color: var(--clk); }
+.lb2-regbit.todo { opacity: 0.45; border-style: dashed; }
+
+@media (max-width: 560px) {
+  .lb2-eq { font-size: 13px; }
+  .lb2-tt td.lb2-l { white-space: normal; min-width: 7em; }
+}
+.lb2-tt td { white-space: nowrap; }
+/* 宽电路图：窄屏时保持可读字号，横向滚动 */
+.lb2-wide { min-width: 400px; }
+.lb2-presets .ctl-btn { font-size: 12px; padding: 4px 9px; }

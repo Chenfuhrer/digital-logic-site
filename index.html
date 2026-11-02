@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>跳变沿 · 数字电子技术</title>
+    <meta name="description" content="数字电子技术基础：知识地图、49 课时路线、9 个交互实验、考点与易错点、诊断测试" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23111316'/%3E%3Cpath d='M8 44H24V20H40V44H56' fill='none' stroke='%237dfa9c' stroke-width='6' stroke-linejoin='round'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;400;600;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./labs-a.css" />
+    <link rel="stylesheet" href="./labs-b.css" />
+    <link rel="stylesheet" href="./labs-b2.css" />
+    <script>if (!/[?&]static\b/.test(location.search)) document.documentElement.classList.add("js");</script>
+  </head>
+  <body>
+    <nav class="topbar" aria-label="页面导航">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 28 16"><path d="M1 13H8V3H17V13H27" /></svg></span><span class="brand-name">跳变沿</span><em>Edge</em></a>
+      <div class="nav-links">
+        <a href="#thread">主线</a>
+        <a href="#map">地图</a>
+        <a href="#route">课时</a>
+        <a href="#lab">实验室</a>
+        <a href="#tree">知识树</a>
+        <a href="#points">考点</a>
+        <a href="#exam">题型</a>
+        <a href="#growth">成长</a>
+        <a href="#time">计划</a>
+        <a href="#diag">诊断</a>
+      </div>
+      <a class="nav-progress" href="#route" id="navProgress" aria-label="学习进度"></a>
+    </nav>
+
+    <header class="hero" id="top">
+      <canvas id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow"><span class="led"></span>Digital Electronics · Self-study Course</p>
+        <h1><span class="h1-a">数字电子技术</span><span class="h1-b">0 / 1 <i>→</i> 门 <i>→</i> 状态 <i>→</i> 系统</span></h1>
+        <p class="hero-lede">整门课只回答一个问题：<b>输出由什么决定？</b>组合电路只看<em>现在</em>的输入；时序电路还要看它<em>记住的过去</em>。</p>
+        <div class="hero-stats" id="heroStats"></div>
+        <div class="hero-cta">
+          <a class="btn primary" href="#diag">先做诊断测试</a>
+          <a class="btn ghost" href="#map">打开知识地图</a>
+          <a class="btn ghost" href="#lab">进入实验室</a>
+        </div>
+      </div>
+      <p class="hero-caption" id="heroCaption">背景是一片同步十进制计数器的实时波形：每个时钟上升沿，Q3 Q2 Q1 Q0 走一步。点击画面切换十进制 / 十六进制。</p>
+    </header>
+
+    <main>
+      <section class="section" id="thread">
+        <div class="section-head reveal">
+          <span class="section-no">0x01</span>
+          <div>
+            <h2>一条主线：输出由什么决定</h2>
+            <p>九个模块是一条信号链。每往前一步，电路多回答一个问题。</p>
+          </div>
+        </div>
+        <div class="thread reveal" id="thread-band"></div>
+        <div class="thread-key reveal">
+          <div class="tk tk-comb"><b>组合逻辑</b><span>$Y=F(X)$</span><small>只看现在的输入。真值表就能完整描述。</small></div>
+          <div class="tk-plus">＋ 记忆 ＝</div>
+          <div class="tk tk-seq"><b>时序逻辑</b><span>$Q^{*}=F(X,Q),\ Y=G(X,Q)$</span><small>还看过去，过去被压缩成“状态”。需要状态图。</small></div>
+        </div>
+      </section>
+
+      <section class="section" id="map">
+        <div class="section-head reveal">
+          <span class="section-no">0x02</span>
+          <div>
+            <h2>知识地图</h2>
+            <p>点任意一课：亮起的是学它之前必须先懂的，虚线是它会解锁的。九条轨道就是九个模块。</p>
+          </div>
+        </div>
+        <div class="map-wrap reveal">
+          <div class="map-legend" id="mapLegend"></div>
+          <div class="map-scroll"><svg id="mapSvg" role="img" aria-label="49 个课时之间的先修依赖关系图"></svg></div>
+          <aside class="map-detail" id="mapDetail" aria-live="polite"></aside>
+        </div>
+      </section>
+
+      <section class="section" id="route">
+        <div class="section-head reveal">
+          <span class="section-no">0x03</span>
+          <div>
+            <h2>课时计划</h2>
+            <p>49 课时 + 9 次章节测试 + 1 次综合。勾选「已学完」只保存在本机浏览器里。</p>
+          </div>
+        </div>
+        <div class="route-bar reveal">
+          <div class="chip-row" id="routeFilters" role="group" aria-label="筛选课时"></div>
+          <div class="seg-row view-switch" id="routeView" role="radiogroup" aria-label="显示方式">
+            <button class="seg-btn" type="button" data-v="cards" role="radio" aria-checked="true">卡片</button>
+            <button class="seg-btn" type="button" data-v="table" role="radio" aria-checked="false">表格</button>
+          </div>
+          <div class="route-progress" id="routeProgress"></div>
+        </div>
+        <div id="routeGroups"></div>
+        <div id="routeTable" hidden></div>
+      </section>
+
+      <section class="section" id="lab">
+        <div class="section-head reveal">
+          <span class="section-no">0x04</span>
+          <div>
+            <h2>交互实验室</h2>
+            <p>九个实验台，全部按器件逻辑实时计算。先在纸上预测，再拨动开关验证。</p>
+          </div>
+        </div>
+        <div class="lab reveal">
+          <div class="lab-tabs" id="labTabs" role="tablist" aria-label="实验列表"></div>
+          <div class="lab-stage" id="labStage"></div>
+        </div>
+      </section>
+
+      <section class="section" id="tree">
+        <div class="section-head reveal">
+          <span class="section-no">0x05</span>
+          <div>
+            <h2>知识树</h2>
+            <p>一级是模块，二级是子模块，三级是知识点。A 教材核心必学，B 考试常见，C 工程拓展。</p>
+          </div>
+        </div>
+        <div class="chip-row reveal" id="treeFilters" role="group" aria-label="按类别筛选"></div>
+        <div class="tree-grid" id="treeGrid"></div>
+        <div class="links reveal" id="treeLinks"></div>
+      </section>
+
+      <section class="section" id="points">
+        <div class="section-head reveal">
+          <span class="section-no">0x06</span>
+          <div>
+            <h2>最重要的 15 个 · 最易错的 15 个</h2>
+            <p>易错卡片先读错误想法，自己说出错在哪，再点击翻面。</p>
+          </div>
+        </div>
+        <div class="pit-grid">
+          <ol class="core-list reveal" id="coreList"></ol>
+          <div class="flip-grid" id="flipGrid"></div>
+        </div>
+      </section>
+
+      <section class="section" id="exam">
+        <div class="section-head reveal">
+          <span class="section-no">0x07</span>
+          <div>
+            <h2>考试题型与策略</h2>
+            <p>按评分点写步骤。分值占比没有学校试卷支撑，全部是经验估计。</p>
+          </div>
+        </div>
+        <div class="exam-list" id="examList"></div>
+      </section>
+
+      <section class="section" id="growth">
+        <div class="section-head reveal">
+          <span class="section-no">0x08</span>
+          <div>
+            <h2>能力成长路线</h2>
+            <p>从会算一道卡诺图，到能把一个需求变成一块能跑的数字系统。</p>
+          </div>
+        </div>
+        <div class="growth" id="growthPath"></div>
+        <div class="projects reveal" id="projects"></div>
+      </section>
+
+      <section class="section" id="time">
+        <div class="section-head reveal">
+          <span class="section-no">0x09</span>
+          <div>
+            <h2>时间与计划</h2>
+            <p>全部是估计值（⚠️待验证），学完前两课后按你的实际速度校准。</p>
+          </div>
+        </div>
+        <div class="time-grid">
+          <div class="time-bars reveal" id="timeBars"></div>
+          <div class="plan reveal" id="plan"></div>
+        </div>
+      </section>
+
+      <section class="section" id="diag">
+        <div class="section-head reveal">
+          <span class="section-no">0x0A</span>
+          <div>
+            <h2>基础水平诊断测试</h2>
+            <p>答案暂不公布。写完后点「复制我的作答」，粘贴到对话里，我来批改并据此调整课时。</p>
+          </div>
+        </div>
+        <div class="diag reveal" id="diagBox"></div>
+      </section>
+
+      <section class="section start" id="start">
+        <div class="start-card reveal">
+          <p class="start-k">NEXT EDGE ↑</p>
+          <h2>规划已完成，等待你的第一个时钟沿。</h2>
+          <p>在对话里回复 <b>「开始第一课」</b>，正式进入 L1。每次只讲一个知识点，讲完做理解检查，你确认后才进入下一课。</p>
+          <ul class="rules" id="rules"></ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          <p class="footer-title">数据与证据说明</p>
+          <ul id="evidenceList"></ul>
+        </div>
+        <div>
+          <div id="localFiles" hidden>
+            <p class="footer-title">配套文件（仅本机预览时显示）</p>
+            <ul>
+              <li><a href="../数字电子技术_课程大纲.md">数字电子技术_课程大纲.md</a></li>
+              <li><a href="../数字电子技术_学习进度.md">数字电子技术_学习进度.md</a></li>
+            </ul>
+          </div>
+          <p class="footer-title">说明</p>
+          <ul>
+            <li>进度与诊断作答只保存在当前浏览器，换设备不会同步。</li>
+            <li>实验中的波形和结果均按器件逻辑实时计算。</li>
+          </ul>
+          <p class="footer-meta" id="footerMeta"></p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <noscript><div class="noscript">这个页面需要 JavaScript 才能显示课程内容。</div></noscript>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    <script defer src="./data.js"></script>
+    <script defer src="./content.js"></script>
+    <script defer src="./labs-core.js"></script>
+    <script defer src="./labs-a.js"></script>
+    <script defer src="./labs-b.js"></script>
+    <script defer src="./labs-b-ff.js"></script>
+    <script defer src="./labs-b-counter.js"></script>
+    <script defer src="./labs-b-fsm.js"></script>
+    <script defer src="./labs-b-timer.js"></script>
+    <script defer src="./labs-b-adc.js"></script>
+    <script defer src="./app.js"></script>
+  </body>
+</html>

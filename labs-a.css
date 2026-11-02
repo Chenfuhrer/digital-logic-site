@@ -1,0 +1,141 @@
+/* 实验 A 组专用样式（进制与编码 / 逻辑函数 / 卡诺图 / 译码器·选择器 / 首屏）。类名统一 la- 前缀，颜色只用 CSS 变量。 */
+
+.la-hero-cvs { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: pointer; }
+
+/* 被 hidden 的块（覆盖 .ctl 等的 display） */
+.la-field[hidden], .la-ctlgroup[hidden], .la-ctlgroup [hidden], .la-modebox[hidden], .la-step[hidden] { display: none !important; }
+
+/* 左侧分节 */
+.la-sec { min-width: 0; }
+.la-h {
+  margin: 4px 0 8px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 5px;
+}
+.la-p { margin: 8px 0 0; font-size: 13.5px; line-height: 1.75; color: var(--ink-2); }
+.la-small { font-size: 12px; }
+.la-dim { color: var(--ink-3); }
+.la-mono { font-family: var(--mono); }
+.la-bad { color: var(--hi); font-weight: 700; }
+.la-good { color: var(--ok); font-weight: 700; }
+.la-scroll { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; }
+.la-scroll table { margin: 0; }
+.la-stale { opacity: 0.4; }
+.la-hr { border: 0; border-top: 1px dashed var(--rule-2); margin: 10px 0; }
+.la-click canvas { cursor: pointer; }
+
+/* 右侧控件 */
+.la-ctl-h {
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--rule-2);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+.la-ctlgroup { display: grid; gap: 12px; }
+.la-input { width: 100%; box-sizing: border-box; font-family: var(--mono); }
+.la-presets .ctl-btn { font-size: 12px; padding: 4px 9px; }
+.la-msg:empty { display: none; }
+
+/* 错误提示 */
+.la-err {
+  border: 1px solid var(--hi);
+  border-left-width: 4px;
+  background: var(--card);
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+.la-err pre {
+  margin: 6px 0 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--hi);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* 上划线（反变量 / 低有效） */
+.la-ov { text-decoration: overline; text-decoration-thickness: 1.3px; text-underline-offset: 0; }
+.la-expr { font-family: var(--mono); font-size: 13px; overflow-wrap: anywhere; line-height: 1.9; }
+
+/* 进制：读法表、原反补、除 2、加法 */
+.la-kv th { text-align: left; white-space: nowrap; font-family: var(--sans); font-weight: 600; }
+.la-kv td { text-align: left; }
+.la-sb { color: var(--hi); font-weight: 700; margin-right: 2px; padding-right: 2px; border-right: 1px solid var(--rule-2); }
+.la-codes td:first-child { font-weight: 600; }
+.la-add th { font-family: var(--sans); text-align: right; }
+.la-add td { min-width: 1.6em; }
+.la-add .la-crow td { font-size: 11px; color: var(--ink-3); }
+.la-add td.la-cy { color: var(--data); font-weight: 700; box-shadow: inset 0 0 0 2px var(--data); }
+.la-add td.la-cy-bad { color: var(--hi); box-shadow: inset 0 0 0 2px var(--hi); }
+.la-add td.la-sbc { background: var(--paper-2); }
+.la-add td.la-dec { text-align: right; min-width: 3.4em; font-weight: 600; }
+.la-add .la-sum td { border-top: 2px solid var(--ink); font-weight: 700; }
+.la-add td.la-drop { color: var(--ink-3); text-decoration: line-through; }
+
+/* 逻辑函数 */
+.la-verdict { margin: 0 0 6px; padding: 7px 10px; border-radius: 4px; font-size: 13.5px; border-left: 4px solid; background: var(--card); }
+.la-verdict-ok { border-color: var(--ok); color: var(--ok); }
+.la-verdict-bad { border-color: var(--hi); color: var(--hi); }
+.la-truth th.la-fcol, .la-truth td.la-fcol { border-left: 2px solid var(--ink); }
+.la-forms { display: grid; gap: 4px; }
+.la-form { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 10px; align-items: baseline; font-size: 13px; }
+.la-form .la-mono { overflow-wrap: anywhere; }
+.la-fl { color: var(--ink-3); font-size: 12px; white-space: nowrap; }
+.la-form-min .la-expr { color: var(--ok); font-weight: 600; }
+.la-gate { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: start; }
+.la-gate-cv { min-width: 0; }
+.la-gate-side { display: grid; gap: 4px; justify-items: start; min-width: 130px; }
+.la-gname { font-weight: 700; font-size: 14px; }
+.la-gtt { margin-top: 6px; }
+@media (max-width: 560px) {
+  .la-gate { grid-template-columns: minmax(0, 1fr); }
+  .la-form { grid-template-columns: minmax(0, 1fr); gap: 0; }
+}
+
+/* 卡诺图 */
+.la-step {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding: 10px 12px;
+  border: 1px solid var(--clk);
+  border-left-width: 4px;
+  border-radius: 4px;
+  background: var(--card);
+  font-size: 13.5px;
+  line-height: 1.75;
+}
+.la-step-n { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--clk); white-space: nowrap; padding-top: 2px; }
+.la-big .la-expr { font-size: 17px; font-weight: 700; color: var(--ink); }
+.la-warnline { color: var(--warn); }
+.la-cirlist { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 6px; }
+.la-cirlist li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; font-size: 13px; }
+.la-sw { display: inline-block; width: 18px; height: 12px; border: 2.5px solid; border-radius: 5px; flex: none; align-self: center; }
+.la-tag { font-family: var(--mono); font-size: 10.5px; padding: 1px 6px; border-radius: 3px; background: var(--ink); color: var(--paper); }
+.la-details { margin-top: 12px; }
+.la-details summary { cursor: pointer; font-size: 13px; color: var(--ink-2); }
+.la-details[open] summary { margin-bottom: 8px; }
+.la-primes td.la-expr { line-height: 1.4; }
+.la-dcm { color: var(--warn); }
+
+/* 译码器 / 选择器 / 七段 */
+.la-modebox { display: grid; gap: 12px; min-width: 0; }
+.la-deriv .la-p:first-child { margin-top: 0; }
+.la-deriv .katex { font-size: 1.05em; }
+.la-deriv { overflow-x: auto; }
+.la-red td.la-di { font-weight: 700; color: var(--data); }
+.la-segtab td, .la-segtab th { padding: 2px 6px; }

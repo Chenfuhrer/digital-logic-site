@@ -1,0 +1,20 @@
+/* 实验 B 组（ff / counter）专用样式：类名以 lb- 开头，颜色只用 CSS 变量 */
+.lb-hide { display: none !important; }
+.lb-dim { opacity: 0.45; }
+
+/* ---- ff 触发器 ---- */
+.lb-ff-stage canvas { cursor: crosshair; }
+.lb-ff-info { display: grid; gap: 10px; }
+.lb-ff-eq { font-size: 13px; color: var(--ink-2); line-height: 1.7; }
+.lb-ff-eq b { color: var(--ink); font-weight: 600; margin-right: 6px; }
+.lb-ff-tabs { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; }
+.lb-ff-tab { margin: 0; display: grid; gap: 4px; max-width: 100%; overflow-x: auto; }
+.lb-ff-tab figcaption { font-size: 12px; color: var(--ink-2); }
+.lb-ff-tab .lb-ff-foot { font-size: 11px; color: var(--ink-3); }
+.lb-ff-hint { margin: 0; font-size: 12px; color: var(--ink-3); line-height: 1.6; }
+
+/* ---- counter 计数器 ---- */
+.lb-cnt-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.lb-cnt-why { margin: 0; font-size: 13px; line-height: 1.7; color: var(--ink-2); padding: 10px 12px; border-left: 3px solid var(--clk); background: var(--paper-2); }
+.lb-cnt-why b { color: var(--ink); }
+.lb-cnt-hint { margin: 0; font-size: 12px; color: var(--ink-3); line-height: 1.6; }
